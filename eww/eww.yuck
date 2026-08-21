@@ -1,0 +1,25 @@
+(defpoll clock_digits :interval "1s"
+  `"$HOME/gelbooru project/get-clock.sh"`)
+
+(defwidget gelbooru_clock []
+  (box :class "clock-container"
+       :orientation "h"
+       :space-evenly false
+       :spacing 10
+    (image :path "${clock_digits.d1}" :image-width 120 :image-height 200)
+    (image :path "${clock_digits.d2}" :image-width 120 :image-height 200)
+    (label :text ":" :class "clock-colon")
+    (image :path "${clock_digits.d3}" :image-width 120 :image-height 200)
+    (image :path "${clock_digits.d4}" :image-width 120 :image-height 200)))
+
+(defwindow gelbooru_clock_window
+  :monitor 0
+  :geometry (geometry :x "787px"
+                      :y "0px"
+                      :width "600px"
+                      :height "220px"
+                      :anchor "top left")
+  :stacking "bg"
+  :focusable false
+  :wm-ignore true
+  (gelbooru_clock))
